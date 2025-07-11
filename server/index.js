@@ -7,6 +7,14 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// ✅ Import and use the API routes
+const apiRoutes = require("./routes/api");
+app.use("/api", apiRoutes);
+
+const generateRoute = require("./routes/generate");
+app.use("/api", generateRoute);
+
+
 app.get("/", (req, res) => {
   res.send("✅ CodePromptEval backend is running!");
 });

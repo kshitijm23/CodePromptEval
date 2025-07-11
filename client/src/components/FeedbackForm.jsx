@@ -5,27 +5,30 @@ function FeedbackForm({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!feedback.trim()) {
-      alert("Feedback cannot be empty.");
-      return;
-    }
+    if (!feedback.trim()) return;
     onSubmit(feedback);
     setFeedback("");
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-      <label className="block font-medium text-gray-700">Your Feedback:</label>
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white p-6 mt-6 rounded shadow-md space-y-4"
+    >
+      <label className="block text-gray-700 font-medium mb-1">
+        Your Feedback
+      </label>
       <textarea
-        className="w-full p-2 border border-gray-300 rounded"
+        className="w-full p-3 border border-gray-300 rounded resize-none focus:outline-blue-500"
         rows="3"
-        placeholder="e.g., The code is correct but lacks error handling."
         value={feedback}
         onChange={(e) => setFeedback(e.target.value)}
-      />
+        placeholder="Is the AI code correct? Suggestions?"
+      ></textarea>
+
       <button
         type="submit"
-        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+        className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition"
       >
         Submit Feedback
       </button>
